@@ -105,3 +105,44 @@ const onSubmit = (data) => {
   )
 }
 ```
+
+- 6글자가 넘어가면 유효성 검사로 6글자가 넘어야 한다는 메세지를 주고 싶었다.
+- 그치만 errors부분에 자꾸 에러가 났다. 타입이 지정이 안됐다고 한다.
+
+  ### 처음 시도
+
+  ```jsx
+  export default function HookForm() {
+    const { register, handleSubmit, reset, errors } =
+      useForm <
+      FormValues >
+      {
+        mode: 'onChange',
+      }
+      ~~~~
+  }
+  ```
+
+- chat gpt한테 물어봤는데 자꾸 이렇게 알려준다.
+
+```jsx
+ {errors?.username && <p>{(errors.username as FieldErrors)?.message}</p>}
+      <input type="submit" />
+```
+
+```jsx
+
+export default function HookForm() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
+    mode: 'onChange',
+  })
+  ~~~~
+}
+```
+
+- 결국 공식문서에서 찾은 정답 역시 아직 chat gpt보단 사람인것 같다.

@@ -28,7 +28,7 @@ const NoHookForm = () => {
   return (
     <div>
       <form>
-        <input value={name} onChange={handleName} />
+        <input value={name} onChange={handleName} placeholder="No hook form" />
         {errors.name.invalid ? (
           <p className="error">{errors.name.message}</p>
         ) : null}
