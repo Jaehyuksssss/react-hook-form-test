@@ -1,17 +1,23 @@
 import { useForm } from 'react-hook-form'
 
-export default function HookForm() {
-  const { register, handleSubmit } = useForm({ mode: 'onChange' })
+export interface FormValues {
+  username: string
+  error: string
+}
+export interface FormProps {
+  onSubmit: (data: FormValues) => void
+}
 
-  const onSubmit = (data: any) => {
+export default function HookForm() {
+  const { register, handleSubmit } = useForm<FormValues>({ mode: 'onChange' })
+
+  const onSubmit = (data: FormValues) => {
     console.log(data)
   }
-  const onError = (error: any) => {
-    console.log(error)
-  }
+
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
           placeholder="username"
