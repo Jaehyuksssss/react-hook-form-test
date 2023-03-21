@@ -3,6 +3,7 @@ import { FieldError } from 'react-hook-form'
 
 export interface FormValues {
   username: string
+  email: string
 }
 
 export interface FormProps {
@@ -14,6 +15,7 @@ export default function HookForm() {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<FormValues>({
     mode: 'onChange',
@@ -34,6 +36,10 @@ export default function HookForm() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
+        <label>Email</label>
+        <input type="email" {...register('email', { required: true })} />
+        {errors.email && <span>This field is required</span>}
+
         <input
           type="text"
           placeholder="username"
@@ -47,7 +53,7 @@ export default function HookForm() {
           onKeyUp={onKeyPress}
         />
         {errors?.username?.message && <p>{errors.username.message}</p>}
-        <input type="submit" />
+        <button type="submit">Login</button>
       </form>
     </div>
   )

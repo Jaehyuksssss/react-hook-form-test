@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <HookForm />
-      <NoHookForm />
+      {/* <NoHookForm /> */}
     </div>
   )
 }
