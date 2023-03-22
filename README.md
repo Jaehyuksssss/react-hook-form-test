@@ -2,7 +2,8 @@
 
 ## Contents
 
-react-hook-form 을 썼을때 쓰지 않았을 경우 비교
+- react-hook-form 을 썼을때 쓰지 않았을 경우 비교
+- react-hook-form 기능들 써보고 정리
 
 ---
 
