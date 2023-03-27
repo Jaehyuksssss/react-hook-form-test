@@ -37,6 +37,7 @@ export default function HookForm() {
   const firstName = watch('email') // watch 함수를 사용하여 'email' 필드의 값을 추적합니다.
   const allValues = getValues() // getValues 함수를 사용하여 모든 필드의 값을 가져옵니다.
   console.log(firstName)
+  console.log(allValues)
 
   return (
     <div>
